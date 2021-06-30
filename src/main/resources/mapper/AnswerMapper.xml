@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ledao.mapper.AnswerMapper">
+    <resultMap id="answerResult" type="Answer">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="questionId" column="questionId"/>
+        <result property="isTrue" column="isTrue"/>
+    </resultMap>
+
+    <insert id="add" parameterType="Answer">
+        insert into t_answer (content, questionId, isTrue)
+        values (#{content}, #{questionId}, #{isTrue});
+    </insert>
+
+    <select id="getAnswerByQuestionId" parameterType="integer" resultMap="answerResult">
+        select *
+        from t_answer
+        where questionId = #{questionId}
+    </select>
+
+    <delete id="deleteById" parameterType="integer">
+        delete
+        from t_answer
+        where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="Answer">
+        update t_answer
+        <set>
+            <if test="content != null and content != ''">
+                content=#{content},
+            </if>
+            <if test="questionId != null">
+                questionId=#{questionId},
+            </if>
+            <if test="isTrue != null">
+                isTrue=#{isTrue},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

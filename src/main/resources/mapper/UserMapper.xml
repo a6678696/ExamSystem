@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ledao.mapper.UserMapper">
+    <resultMap id="UserResult" type="User">
+        <result property="id" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="password" column="password"/>
+        <result property="type" column="type"/>
+    </resultMap>
+    <select id="findByUserName" parameterType="string" resultType="com.ledao.entity.User">
+        select *
+        from t_user
+        where userName = #{userName}
+    </select>
+
+    <update id="update" parameterType="User">
+        update t_user
+        <set>
+            <if test="password != null and password != ''">
+                password=#{password},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="findById" parameterType="integer" resultType="com.ledao.entity.User">
+        select * from t_user where id=#{id}
+    </select>
+</mapper>

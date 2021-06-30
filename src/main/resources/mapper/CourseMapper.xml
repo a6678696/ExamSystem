@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ledao.mapper.CourseMapper">
+    <resultMap id="courseResult" type="Course">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="getAllCourse" resultMap="courseResult">
+        select *
+        from t_course
+    </select>
+
+    <select id="findById" parameterType="integer" resultType="com.ledao.entity.Course">
+        select * from t_course where id=#{id}
+    </select>
+</mapper>

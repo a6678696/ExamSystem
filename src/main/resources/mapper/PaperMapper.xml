@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ledao.mapper.PaperMapper">
+    <resultMap id="paperResult" type="Paper">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="courseName" column="courseName"/>
+        <result property="createDate" column="createDate"/>
+        <result property="score" column="score"/>
+    </resultMap>
+
+    <insert id="add" parameterType="Paper">
+        insert into t_paper (userId, courseName, createDate, score)
+        values (#{userId}, #{courseName}, now(), 0);
+    </insert>
+
+    <select id="findByUserIdLastOne" parameterType="integer" resultType="com.ledao.entity.Paper">
+        select * from t_paper where userId=#{userId} order by createDate desc limit 1
+    </select>
+</mapper>
