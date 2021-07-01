@@ -34,4 +34,9 @@ public class UserServiceImpl implements UserService {
     public User findById(Integer id) {
         return userMapper.findById(id);
     }
+
+    @Override
+    public Integer add(User user) {
+        return userMapper.add(user);
+    }
 }

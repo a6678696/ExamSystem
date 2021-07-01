@@ -1,12 +1,10 @@
 package com.ledao.controller;
 
-import com.ledao.entity.Answer;
-import com.ledao.entity.Paper;
-import com.ledao.entity.PaperQuestion;
-import com.ledao.entity.Question;
+import com.ledao.entity.*;
 import com.ledao.service.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -148,15 +146,21 @@ public class PaperController {
     }
 
     /**
-     * 根据用户id获取全部试卷
+     * 根据用户id获取试卷(分页)
      *
      * @param userId
      * @return
      */
     @RequestMapping("/getListFindByUserId")
-    public Map<String, Object> getListFindByUserId(Integer userId) {
+    public Map<String, Object> getListFindByUserId(Integer userId, @RequestParam(value = "page",required = false)Integer page, @RequestParam(value = "size",required = false)Integer size) {
+        PageBean pageBean = new PageBean(page, size);
         Map<String, Object> resultMap = new HashMap<>(16);
-        List<Paper> paperList = paperService.getListFindByUserId(userId);
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("userId", userId);
+        map.put("start", pageBean.getStart());
+        map.put("size", pageBean.getPageSize());
+        List<Paper> paperList = paperService.list(map);
+        resultMap.put("total", paperService.getCount(map));
         resultMap.put("rows", paperList);
         return resultMap;
     }

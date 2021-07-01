@@ -25,6 +25,13 @@
     </update>
 
     <select id="findById" parameterType="integer" resultType="com.ledao.entity.User">
-        select * from t_user where id=#{id}
+        select *
+        from t_user
+        where id = #{id}
     </select>
+
+    <insert id="add" parameterType="User">
+        insert into t_user (userName, password, type)
+        values (#{userName}, #{password}, #{type});
+    </insert>
 </mapper>

@@ -3,6 +3,7 @@ package com.ledao.service;
 import com.ledao.entity.Paper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 试卷Service接口
@@ -52,4 +53,20 @@ public interface PaperService {
      * @return
      */
     Paper findById(Integer id);
+
+    /**
+     * 根据多条件获取试卷(分页)
+     *
+     * @param map
+     * @return
+     */
+    List<Paper> list(Map<String, Object> map);
+
+    /**
+     * 获取记录数
+     *
+     * @param map
+     * @return
+     */
+    Long getCount(Map<String, Object> map);
 }

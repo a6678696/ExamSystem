@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 试卷Service实现类
@@ -44,5 +45,15 @@ public class PaperServiceImpl implements PaperService {
     @Override
     public Paper findById(Integer id) {
         return paperMapper.findById(id);
+    }
+
+    @Override
+    public List<Paper> list(Map<String, Object> map) {
+        return paperMapper.list(map);
+    }
+
+    @Override
+    public Long getCount(Map<String, Object> map) {
+        return paperMapper.getCount(map);
     }
 }

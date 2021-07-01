@@ -69,4 +69,34 @@ public class UserController {
         resultMap.put("status", 1);
         return resultMap;
     }
+
+    /**
+     * @param userName
+     * @return
+     */
+    @RequestMapping("/findByUserName")
+    public Map<String, Object> findByUserName(String userName) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        User user = userService.findByUserName(userName);
+        if (user == null) {
+            resultMap.put("success", true);
+        } else {
+            resultMap.put("success", false);
+        }
+        return resultMap;
+    }
+
+    /**
+     * 添加用户
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping("/add")
+    public Map<String, Object> add(User user) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        userService.add(user);
+        resultMap.put("success", true);
+        return resultMap;
+    }
 }

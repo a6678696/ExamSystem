@@ -34,4 +34,12 @@ public interface UserService {
      * @return
      */
     User findById(Integer id);
+
+    /**
+     * 添加用户
+     *
+     * @param user
+     * @return
+     */
+    Integer add(User user);
 }
