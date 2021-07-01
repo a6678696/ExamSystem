@@ -28,6 +28,9 @@
             <if test="score != null">
                 score=#{score},
             </if>
+            <if test="answer != null and answer != ''">
+                answer=#{answer},
+            </if>
         </set>
         where id = #{id}
     </update>

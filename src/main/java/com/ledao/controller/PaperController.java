@@ -119,6 +119,9 @@ public class PaperController {
                 //修改
                 paperQuestionService.update(paperQuestion);
             }
+            PaperQuestion paperQuestion = singleList.get(i);
+            paperQuestion.setAnswer(questionSingleArr[i]);
+            paperQuestionService.update(paperQuestion);
         }
         for (int i = 0; i < fillList.size(); i++) {
             fillList.get(i).setTrueAnswerStr(answerService.getAnswerByQuestionId(fillList.get(i).getQuestionId()).get(0).getContent());
@@ -128,6 +131,9 @@ public class PaperController {
                 paperQuestion.setScore(5);
                 paperQuestionService.update(paperQuestion);
             }
+            PaperQuestion paperQuestion = fillList.get(i);
+            paperQuestion.setAnswer(questionFillArr[i]);
+            paperQuestionService.update(paperQuestion);
         }
         for (PaperQuestion paperQuestion : singleList) {
             score += paperQuestion.getScore();
@@ -138,6 +144,51 @@ public class PaperController {
         lastPaper.setScore(score);
         paperService.update(lastPaper);
         resultMap.put("success", true);
+        return resultMap;
+    }
+
+    /**
+     * 根据用户id获取全部试卷
+     *
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/getListFindByUserId")
+    public Map<String, Object> getListFindByUserId(Integer userId) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        List<Paper> paperList = paperService.getListFindByUserId(userId);
+        resultMap.put("rows", paperList);
+        return resultMap;
+    }
+
+    /**
+     * 根据id获取试卷
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/findById")
+    public Map<String, Object> findById(Integer id) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        Paper paper = paperService.findById(id);
+        List<PaperQuestion> singleList = paperQuestionService.getListByPaperIdAndCourseName(id, "单选题");
+        List<PaperQuestion> fillList = paperQuestionService.getListByPaperIdAndCourseName(id, "填空题");
+        for (PaperQuestion paperQuestion : singleList) {
+            Question question = questionService.findById(paperQuestion.getQuestionId());
+            paperQuestion.setQuestion(question);
+            List<Answer> answerList = answerService.getAnswerByQuestionId(paperQuestion.getQuestionId());
+            paperQuestion.setAnswerList(answerList);
+        }
+        for (PaperQuestion paperQuestion : fillList) {
+            Question question = questionService.findById(paperQuestion.getQuestionId());
+            paperQuestion.setQuestion(question);
+            List<Answer> answerList = answerService.getAnswerByQuestionId(paperQuestion.getQuestionId());
+            paperQuestion.setAnswerList(answerList);
+            paperQuestion.setTrueAnswerStr(answerService.getAnswerByQuestionId(paperQuestion.getQuestionId()).get(0).getContent());
+        }
+        resultMap.put("singleList", singleList);
+        resultMap.put("fillList", fillList);
+        resultMap.put("paper", paper);
         return resultMap;
     }
 }

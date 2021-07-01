@@ -2,6 +2,9 @@ package com.ledao.mapper;
 
 import com.ledao.entity.Paper;
 
+import java.nio.file.Path;
+import java.util.List;
+
 /**
  * 试卷Mapper接口
  *
@@ -34,4 +37,20 @@ public interface PaperMapper {
      * @return
      */
     Integer update(Paper paper);
+
+    /**
+     * 根据用户id获取全部试卷
+     *
+     * @param userId
+     * @return
+     */
+    List<Paper> getListFindByUserId(Integer userId);
+
+    /**
+     * 根据id获取试卷
+     *
+     * @param id
+     * @return
+     */
+    Paper findById(Integer id);
 }

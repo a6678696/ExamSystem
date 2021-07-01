@@ -2,6 +2,8 @@ package com.ledao.service;
 
 import com.ledao.entity.Paper;
 
+import java.util.List;
+
 /**
  * 试卷Service接口
  *
@@ -34,4 +36,20 @@ public interface PaperService {
      * @return
      */
     Integer update(Paper paper);
+
+    /**
+     * 根据用户id获取全部试卷
+     *
+     * @param userId
+     * @return
+     */
+    List<Paper> getListFindByUserId(Integer userId);
+
+    /**
+     * 根据id获取试卷
+     *
+     * @param id
+     * @return
+     */
+    Paper findById(Integer id);
 }

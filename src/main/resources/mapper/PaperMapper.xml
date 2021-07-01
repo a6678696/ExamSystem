@@ -32,4 +32,14 @@
         </set>
         where id = #{id}
     </update>
+
+    <select id="getListFindByUserId" parameterType="integer" resultMap="paperResult">
+        select *
+        from t_paper
+        where userId = #{userId} order by id desc
+    </select>
+
+    <select id="findById" parameterType="integer" resultType="com.ledao.entity.Paper">
+        select * from t_paper where id=#{id}
+    </select>
 </mapper>

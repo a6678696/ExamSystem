@@ -6,6 +6,7 @@ import com.ledao.service.PaperService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 试卷Service实现类
@@ -33,5 +34,15 @@ public class PaperServiceImpl implements PaperService {
     @Override
     public Integer update(Paper paper) {
         return paperMapper.update(paper);
+    }
+
+    @Override
+    public List<Paper> getListFindByUserId(Integer userId) {
+        return paperMapper.getListFindByUserId(userId);
+    }
+
+    @Override
+    public Paper findById(Integer id) {
+        return paperMapper.findById(id);
     }
 }
