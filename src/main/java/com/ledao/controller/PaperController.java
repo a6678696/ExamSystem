@@ -2,6 +2,7 @@ package com.ledao.controller;
 
 import com.ledao.entity.*;
 import com.ledao.service.*;
+import com.ledao.util.StringUtil;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -156,7 +157,7 @@ public class PaperController {
      * @return
      */
     @RequestMapping("/getListFindByUserId")
-    public Map<String, Object> getListFindByUserId(Integer userId, @RequestParam(value = "page",required = false)Integer page, @RequestParam(value = "size",required = false)Integer size) {
+    public Map<String, Object> getListFindByUserId(Integer userId, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
         PageBean pageBean = new PageBean(page, size);
         Map<String, Object> resultMap = new HashMap<>(16);
         Map<String, Object> map = new HashMap<>(16);
@@ -197,6 +198,28 @@ public class PaperController {
         resultMap.put("singleList", singleList);
         resultMap.put("fillList", fillList);
         resultMap.put("paper", paper);
+        return resultMap;
+    }
+
+    /**
+     * 根据用户名获取试卷(分页)
+     *
+     * @param userName
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping("/getListFindByUserName")
+    public Map<String, Object> getListFindByUserName(String userName, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
+        PageBean pageBean = new PageBean(page, size);
+        Map<String, Object> resultMap = new HashMap<>(16);
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("userName", StringUtil.formatLike(userName));
+        map.put("start", pageBean.getStart());
+        map.put("size", pageBean.getPageSize());
+        List<Paper> paperList = paperService.list(map);
+        resultMap.put("total", paperService.getCount(map));
+        resultMap.put("rows", paperList);
         return resultMap;
     }
 }
