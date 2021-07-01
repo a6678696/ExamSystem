@@ -29,4 +29,9 @@ public class PaperServiceImpl implements PaperService {
     public Paper findByUserIdLastOne(Integer userId) {
         return paperMapper.findByUserIdLastOne(userId);
     }
+
+    @Override
+    public Integer update(Paper paper) {
+        return paperMapper.update(paper);
+    }
 }

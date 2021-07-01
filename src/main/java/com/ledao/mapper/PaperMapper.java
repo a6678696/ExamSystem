@@ -26,4 +26,12 @@ public interface PaperMapper {
      * @return
      */
     Paper findByUserIdLastOne(Integer userId);
+
+    /**
+     * 修改试卷
+     *
+     * @param paper
+     * @return
+     */
+    Integer update(Paper paper);
 }

@@ -16,6 +16,20 @@
     </insert>
 
     <select id="findByUserIdLastOne" parameterType="integer" resultType="com.ledao.entity.Paper">
-        select * from t_paper where userId=#{userId} order by createDate desc limit 1
+        select *
+        from t_paper
+        where userId = #{userId}
+        order by createDate desc
+        limit 1
     </select>
+
+    <update id="update" parameterType="Paper">
+        update t_paper
+        <set>
+            <if test="score != null">
+                score=#{score},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

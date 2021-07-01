@@ -121,8 +121,22 @@ public class PaperController {
             }
         }
         for (int i = 0; i < fillList.size(); i++) {
-
+            fillList.get(i).setTrueAnswerStr(answerService.getAnswerByQuestionId(fillList.get(i).getQuestionId()).get(0).getContent());
+            if (fillList.get(i).getTrueAnswerStr().equals(questionFillArr[i])) {
+                fillList.get(i).setScore(5);
+                PaperQuestion paperQuestion = fillList.get(i);
+                paperQuestion.setScore(5);
+                paperQuestionService.update(paperQuestion);
+            }
         }
+        for (PaperQuestion paperQuestion : singleList) {
+            score += paperQuestion.getScore();
+        }
+        for (PaperQuestion paperQuestion : fillList) {
+            score += paperQuestion.getScore();
+        }
+        lastPaper.setScore(score);
+        paperService.update(lastPaper);
         resultMap.put("success", true);
         return resultMap;
     }
