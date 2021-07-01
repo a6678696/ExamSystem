@@ -34,6 +34,9 @@ public class PaperController {
     @Resource
     private AnswerService answerService;
 
+    @Resource
+    private UserService userService;
+
     /**
      * 添加试卷以及该试卷的试题
      *
@@ -43,6 +46,7 @@ public class PaperController {
     @RequestMapping("/add")
     public Map<String, Object> add(Paper paper) {
         Map<String, Object> resultMap = new HashMap<>(16);
+        paper.setUserName(userService.findById(paper.getUserId()).getUserName());
         paperService.add(paper);
         Paper lastPaper = paperService.findByUserIdLastOne(paper.getUserId());
         List<Question> allSingleQuestionList = questionService.getQuestionByCourseIdAndQuestionType(paper.getCourseId(), "单选题");

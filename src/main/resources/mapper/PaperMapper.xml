@@ -5,14 +5,15 @@
     <resultMap id="paperResult" type="Paper">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
+        <result property="userName" column="userName"/>
         <result property="courseName" column="courseName"/>
         <result property="createDate" column="createDate"/>
         <result property="score" column="score"/>
     </resultMap>
 
     <insert id="add" parameterType="Paper">
-        insert into t_paper (userId, courseName, createDate, score)
-        values (#{userId}, #{courseName}, now(), 0);
+        insert into t_paper (userId, courseName, createDate, score, userName)
+        values (#{userId}, #{courseName}, now(), 0, #{userName});
     </insert>
 
     <select id="findByUserIdLastOne" parameterType="integer" resultType="com.ledao.entity.Paper">
@@ -53,6 +54,9 @@
             <if test="userId != null">
                 and userId = #{userId}
             </if>
+            <if test="userName != null and userName != ''">
+                and userName like #{userName}
+            </if>
         </where>
         order by id desc
         <if test="start != null and size != null">
@@ -66,6 +70,9 @@
         <where>
             <if test="userId != null">
                 and userId = #{userId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and userName like #{userName}
             </if>
         </where>
     </select>

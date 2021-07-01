@@ -23,6 +23,10 @@ public class Paper {
      */
     private Integer userId;
     /**
+     * 用户名
+     */
+    private String userName;
+    /**
      * 所属科目编号
      */
     private Integer courseId;

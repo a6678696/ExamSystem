@@ -1,13 +1,17 @@
 package com.ledao.controller;
 
+import com.ledao.entity.PageBean;
 import com.ledao.entity.User;
 import com.ledao.service.UserService;
+import com.ledao.util.StringUtil;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -97,6 +101,42 @@ public class UserController {
         Map<String, Object> resultMap = new HashMap<>(16);
         userService.add(user);
         resultMap.put("success", true);
+        return resultMap;
+    }
+
+    /**
+     * 分页分条件获取用户
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping("/list")
+    public Map<String, Object> list(User user, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size) {
+        PageBean pageBean = new PageBean(page, size);
+        Map<String, Object> resultMap = new HashMap<>(16);
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("typeManager", 1);
+        map.put("userName", StringUtil.formatLike(user.getUserName()));
+        map.put("type", user.getType());
+        map.put("start", pageBean.getStart());
+        map.put("size", pageBean.getPageSize());
+        List<User> userList = userService.list(map);
+        resultMap.put("userList", userList);
+        resultMap.put("total", userService.getCount(map));
+        return resultMap;
+    }
+
+    /**
+     * 根据id获取用户
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/findById")
+    public Map<String, Object> findById(Integer id) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        User user = userService.findById(id);
+        resultMap.put("user", user);
         return resultMap;
     }
 }

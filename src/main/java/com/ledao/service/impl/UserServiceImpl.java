@@ -6,6 +6,8 @@ import com.ledao.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户Service实现类
@@ -38,5 +40,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer add(User user) {
         return userMapper.add(user);
+    }
+
+    @Override
+    public List<User> list(Map<String, Object> map) {
+        return userMapper.list(map);
+    }
+
+    @Override
+    public Long getCount(Map<String, Object> map) {
+        return userMapper.getCount(map);
     }
 }

@@ -2,6 +2,9 @@ package com.ledao.service;
 
 import com.ledao.entity.User;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 用户Service接口
  *
@@ -42,4 +45,20 @@ public interface UserService {
      * @return
      */
     Integer add(User user);
+
+    /**
+     * 根据条件获取用户
+     *
+     * @param map
+     * @return
+     */
+    List<User> list(Map<String, Object> map);
+
+    /**
+     * 获取记录数
+     *
+     * @param map
+     * @return
+     */
+    Long getCount(Map<String, Object> map);
 }
