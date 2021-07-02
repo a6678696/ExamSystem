@@ -128,15 +128,33 @@ public class CourseController {
     }
 
     /**
-     * 根据id获取科目考试时间
+     * 根据id获取科目
      *
      * @param id
      * @return
      */
-    @RequestMapping("/getMinutesById")
-    public Map<String, Object> getMinutesById(Integer id) {
+    @RequestMapping("/findById")
+    public Map<String, Object> findById(Integer id) {
         Map<String, Object> resultMap = new HashMap<>(16);
-        resultMap.put("minutes", courseService.findById(id).getMinutes());
+        Map<String, Object> map = new HashMap<>(16);
+        map.put("courseId", id);
+        Course course = courseService.findById(id);
+        course.setNum(questionService.list(map).size());
+        resultMap.put("course", course);
+        return resultMap;
+    }
+
+    /**
+     * 更新科目
+     *
+     * @param course
+     * @return
+     */
+    @RequestMapping("/update")
+    public Map<String, Object> update(Course course) {
+        Map<String, Object> resultMap = new HashMap<>(16);
+        courseService.update(course);
+        resultMap.put("success", true);
         return resultMap;
     }
 }
