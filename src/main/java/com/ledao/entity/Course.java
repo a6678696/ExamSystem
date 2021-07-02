@@ -21,4 +21,14 @@ public class Course {
      * 名称
      */
     private String name;
+
+    /**
+     * 考试时间(分钟)
+     */
+    private Integer minutes;
+
+    /**
+     * 试题数量
+     */
+    private Integer num;
 }

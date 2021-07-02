@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
- * 课程Service实现类
+ * 科目Service实现类
  *
  * @author LeDao
  * @company
@@ -29,5 +30,30 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course findById(Integer id) {
         return courseMapper.findById(id);
+    }
+
+    @Override
+    public List<Course> list(Map<String, Object> map) {
+        return courseMapper.list(map);
+    }
+
+    @Override
+    public Long getCount(Map<String, Object> map) {
+        return courseMapper.getCount(map);
+    }
+
+    @Override
+    public Integer add(Course course) {
+        return courseMapper.add(course);
+    }
+
+    @Override
+    public Integer update(Course course) {
+        return courseMapper.update(course);
+    }
+
+    @Override
+    public Integer deleteById(Integer id) {
+        return courseMapper.deleteById(id);
     }
 }
