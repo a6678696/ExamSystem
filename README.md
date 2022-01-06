@@ -38,4 +38,96 @@
 
 ### **图片展示**
 
-项目图片展示查看博客：https://blog.zoutl.cn/208.html
+#### 考生
+
+##### 考生注册
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044617.jpg)
+
+##### 考生登录
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044629.jpg)
+
+##### 考生界面
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702045121.jpg)
+
+##### 选择试题类型
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044642.jpg)
+
+##### 考生考试
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044652.jpg)
+
+##### 考生查看成绩
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044705.jpg)
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702045408.jpg)
+
+##### 考生修改密码
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044718.jpg)
+
+##### 考生注销登录
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044731.jpg)
+
+#### 教师
+
+##### 教师登录
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050134.jpg)
+
+##### 教师界面
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050148.jpg)
+
+##### 教师查看学生成绩
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050207.jpg)
+
+##### 教师添加试题
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050225.jpg)
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050234.jpg)
+
+##### 教师查看全部试题
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050246.jpg)
+
+##### 教师管理我的试题
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050255.jpg)
+
+##### 教师修改密码
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050306.jpg)
+
+##### 教师注销登录
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050316.jpg)
+
+#### 管理员
+
+##### 管理员登录
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050658.jpg)
+
+##### 管理员界面
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210703033842.jpg)
+
+##### 科目管理
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210703033826.jpg)
+
+##### 用户管理
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050717.jpg)
+
+##### 全部试题管理
+
+![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050728.jpg)
