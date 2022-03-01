@@ -133,3 +133,7 @@
 ##### 全部试题管理
 
 ![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702050728.jpg)
+
+### PS.
+
+在本地IDE部署本项目的步骤查看博客：[前后端分离项目在本地IDE部署步骤 | LeDao的博客 (zoutl.cn)](https://blog.zoutl.cn/453.html)
