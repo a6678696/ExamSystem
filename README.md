@@ -8,18 +8,6 @@
 
 后端代码地址：https://github.com/a6678696/ExamSystem
 
-演示地址：[http://exam.zoutl.cn](http://exam.zoutl.cn)，用户名和密码如下：
-
-|  id  | userName | password |  type  |
-| :--: | :------: | :------: | :----: |
-|  1   |   111    |   111    |  学生  |
-|  2   |   222    |   222    |  教师  |
-|  3   |   333    |   333    | 管理员 |
-|  4   |   444    |   444    |  教师  |
-|  6   |   123    |   123    |  学生  |
-|  7   |   321    |   321    |  学生  |
-|  8   |   888    |   888    |  学生  |
-
 ### **使用的技术**
 
 本项目为前后端分离项目，使用的技术有：Spring Boot、Mybatis、MySQL5.6、Vue.js、Element UI
