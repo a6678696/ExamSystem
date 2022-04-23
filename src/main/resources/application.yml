@@ -12,12 +12,6 @@ spring:
       file-size-threshold: 0
       max-file-size: 10MB
       max-request-size: 100MB
-  mvc:
-    view:
-      prefix/spring:
-        mvc:
-          view:
-            suffix:
   #数据库连接配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
