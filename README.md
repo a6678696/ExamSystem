@@ -36,11 +36,11 @@
 
 ##### 考生注册
 
-![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044617.jpg)
+![image-20221116152550893](https://image.zoutl.cn/hexo-blog/blogImage/image-20221116152550893.png)
 
 ##### 考生登录
 
-![img](https://image.zoutl.cn/hexo-blog/blogImage/20210702044629.jpg)
+![image-20221116152944537](https://image.zoutl.cn/hexo-blog/blogImage/image-20221116152944537.png)
 
 ##### 考生界面
 
